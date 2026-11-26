@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COCOZY Hub - Solusi Pembungkus Makanan Alami & Ekosistem Sirkular</title>
+  
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: {
+              50: '#FDFBF7',
+              100: '#FAF6F0',
+              200: '#F3ECE2',
+              300: '#E6DDD0',
+            },
+            terracotta: {
+              DEFAULT: '#C86D3B',
+              hover: '#B05B2D',
+              light: '#F7EAE2',
+            },
+            espresso: {
+              DEFAULT: '#2A1E17',
+              muted: '#6B5B51',
+            },
+            olive: {
+              DEFAULT: '#4A6B4C',
+              light: '#EBF2EC',
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Range Slider Styling */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 6px;
+      border-radius: 999px;
+      background: #E6DDD0;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      margin-top: -6px;
+      background-color: #C86D3B;
+      height: 18px;
+      width: 18px;
+      border-radius: 50%;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body class="bg-cream-100 text-espresso font-sans antialiased selection:bg-terracotta selection:text-white pb-24">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <header class="sticky top-0 z-40 bg-cream-100/90 backdrop-blur-md border-b border-cream-300/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-terracotta flex items-center justify-center text-white">
+          <i data-lucide="leaf" class="w-4 h-4"></i>
+        </div>
+        <span class="font-serif font-bold text-xl tracking-wide text-espresso">COCOZY</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-espresso-muted">
+        <a href="#beranda" class="text-terracotta font-semibold">Beranda</a>
+        <a href="#alur-sirkular" class="hover:text-espresso transition">Alur Sirkular</a>
+        <a href="#keunggulan" class="hover:text-espresso transition">Keunggulan</a>
+        <a href="#portal-upcycling" class="hover:text-espresso transition">Portal Upcycling</a>
+        <a href="#katalog" class="hover:text-espresso transition">Katalog Produk</a>
+        <a href="#tentang" class="hover:text-espresso transition">Tentang</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="#portal-upcycling" class="bg-terracotta hover:bg-terracotta-hover text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-full transition shadow-sm flex items-center gap-1.5">
+          <i data-lucide="recycle" class="w-4 h-4"></i>
+          <span>Setor Kain</span>
+        </a>
+        <button onclick="scrollToCart()" class="w-10 h-10 rounded-full border border-cream-300 bg-white flex items-center justify-center text-espresso hover:border-terracotta transition relative">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+          <span id="nav-cart-badge" class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-terracotta text-white text-[10px] font-bold flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section id="beranda" class="py-12 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      
+      <!-- Left Content -->
+      <div class="lg:col-span-6 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream-200 border border-cream-300 text-xs font-semibold text-terracotta">
+          <span class="w-2 h-2 rounded-full bg-terracotta"></span>
+          <span>EKOSISTEM PEMBUNGKUS SIRKULAR PERTAMA DI INDONESIA</span>
+        </div>
+
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-[52px] font-bold leading-[1.15] text-espresso">
+          Solusi Pembungkus Makanan Alami, <span class="italic font-normal text-terracotta">Bebas Plastik,</span> & Berkelanjutan.
+        </h1>
+
+        <p class="text-espresso-muted text-sm sm:text-base leading-relaxed max-w-xl">
+          Ubah kain katun tak terpakai menjadi <strong class="text-espresso">Beeswax & Candelilla Food Wrap</strong> berkualitas tinggi. Gantikan plastik sekali pakai di dapur Anda, sekaligus berdayakan penjahit dan pengrajin lokal.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center gap-3.5 pt-2">
+          <a href="#katalog" class="bg-terracotta hover:bg-terracotta-hover text-white font-semibold text-sm px-6 py-3.5 rounded-full transition shadow-md flex items-center gap-2">
+            <span>Belanja Food Wrap</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#portal-upcycling" class="bg-white hover:bg-cream-200 text-espresso border border-cream-300 font-semibold text-sm px-6 py-3.5 rounded-full transition flex items-center gap-2">
+            <span>Setor / Upcycle Kain</span>
+            <i data-lucide="sparkles" class="w-4 h-4 text-terracotta"></i>
+          </a>
+        </div>
+
+        <!-- Mini Trust Badges -->
+        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-cream-300/80">
+          <div class="flex items-start gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-olive-light text-olive flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="shield-check" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-espresso">100% Food Grade</p>
+              <p class="text-[11px] text-espresso-muted">Lilin lebah & damar alami</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-terracotta-light text-terracotta flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="repeat" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-espresso">Hingga 1 Tahun</p>
+              <p class="text-[11px] text-espresso-muted">Dapat dicuci & dipakai ulang</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-cream-200 text-espresso flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="sprout" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-espresso">100% Kompos</p>
+              <p class="text-[11px] text-espresso-muted">Terurai alami di tanah</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Product Showcase Card -->
+      <div class="lg:col-span-6 relative">
+        <div class="bg-white p-4 sm:p-5 rounded-3xl shadow-xl border border-cream-300/70 relative">
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-cream-200">
+            <img 
+              src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=900&q=80" 
+              alt="Beeswax & Candelilla Food Wrap" 
+              class="w-full h-full object-cover"
+            />
+            <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-espresso text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
+              ✨ Terlaris Minggu Ini
+            </span>
+          </div>
+
+          <div class="pt-4 flex items-center justify-between">
+            <div>
+              <h3 class="font-serif font-bold text-lg text-espresso">Beeswax & Candelilla Wrap</h3>
+              <p class="text-xs text-espresso-muted">Set 3 Ukuran (S, M, L) • Motif Upcycled</p>
+            </div>
+            <div class="text-right">
+              <span class="text-xs text-espresso-muted block">Mulai dari</span>
+              <span class="font-bold text-lg text-terracotta">Rp 45.000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Circular Badge -->
+        <div class="hidden sm:flex items-center gap-3 bg-white px-4 py-3 rounded-2xl shadow-lg border border-cream-300 absolute -bottom-5 -left-6">
+          <div class="w-10 h-10 rounded-xl bg-terracotta text-white flex items-center justify-center">
+            <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <p class="text-[11px] font-medium text-espresso-muted">Dampak Lingkungan</p>
+            <p class="text-xs font-bold text-espresso">2.450+ Kg Kain Terselamatkan</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ALUR SIRKULAR 3-ARAH ==================== -->
+  <section id="alur-sirkular" class="py-16 bg-cream-200/60 border-y border-cream-300/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold tracking-widest uppercase text-terracotta">BAGAIMANA KAMI BEKERJA</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-espresso mt-2">Alur Sirkular 3-Arah COCOZY</h2>
+        <p class="text-sm text-espresso-muted mt-3">
+          Setiap lembar kain memiliki nilai guna baru. Pilih peran Anda dalam memutus rantai limbah tekstil dan plastik rumah tangga.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 01 -->
+        <div class="bg-white rounded-2xl p-6 sm:p-7 border border-cream-300/80 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-serif text-3xl font-bold text-cream-300">01</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-terracotta-light text-terracotta">Kontribusi Kain</span>
+            </div>
+            <div class="w-11 h-11 rounded-xl bg-terracotta-light text-terracotta flex items-center justify-center mb-4">
+              <i data-lucide="shirt" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-espresso mb-2">Jual / Donasi Kain Katun Bekasmu</h3>
+            <p class="text-sm text-espresso-muted leading-relaxed mb-6">
+              Punya sprei, kemeja, atau perca katun bersih yang tak terpakai? Setorkan melalui portal kami untuk ditukar saldo tunai atau poin belanja COCOZY.
+            </p>
+          </div>
+          <a href="#portal-upcycling" class="inline-flex items-center gap-1.5 text-xs font-bold text-terracotta hover:underline">
+            <span>Mulai Setor Kain</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Card 02 -->
+        <div class="bg-white rounded-2xl p-6 sm:p-7 border border-cream-300/80 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-serif text-3xl font-bold text-cream-300">02</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-olive-light text-olive">Proses Produksi</span>
+            </div>
+            <div class="w-11 h-11 rounded-xl bg-olive-light text-olive flex items-center justify-center mb-4">
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-espresso mb-2">Proses Upcycling & Pelapisan Alami</h3>
+            <p class="text-sm text-espresso-muted leading-relaxed mb-6">
+              Kain disterilisasi, dipotong presisi oleh mitra penjahit lokal, lalu dilapisi formula organik lilin lebah (beeswax), resin damar, dan minyak jojoba.
+            </p>
+          </div>
+          <a href="#keunggulan" class="inline-flex items-center gap-1.5 text-xs font-bold text-olive hover:underline">
+            <span>Lihat Standar Keamanan</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="bg-white rounded-2xl p-6 sm:p-7 border border-cream-300/80 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-serif text-3xl font-bold text-cream-300">03</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-cream-200 text-espresso">Gaya Hidup</span>
+            </div>
+            <div class="w-11 h-11 rounded-xl bg-cream-200 text-espresso flex items-center justify-center mb-4">
+              <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-espresso mb-2">Beli Siap Pakai Atau Bikin Custom</h3>
+            <p class="text-sm text-espresso-muted leading-relaxed mb-6">
+              Gunakan COCOZY Wrap untuk membungkus roti, buah, keju, dan mangkuk makanan. Setelah masa pakai habis, wrap dapat dikomposkan sepenuhnya.
+            </p>
+          </div>
+          <a href="#katalog" class="inline-flex items-center gap-1.5 text-xs font-bold text-espresso hover:underline">
+            <span>Jelajahi Katalog</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== KEUNGGULAN ALAMI ==================== -->
+  <section id="keunggulan" class="py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      
+      <!-- Left Column -->
+      <div class="lg:col-span-5 space-y-5">
+        <span class="text-xs font-bold tracking-widest uppercase text-terracotta">MENGAPA MEMILIH COCOZY?</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-espresso leading-tight">
+          Keunggulan Alami Reusable Food Wrap COCOZY
+        </h2>
+        <p class="text-sm text-espresso-muted leading-relaxed">
+          Dirancang untuk menjaga kesegaran bahan makanan lebih lama dengan sirkulasi udara alami yang tidak dimiliki plastik wrap konvensional.
+        </p>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 pt-1">
+          <span class="px-3 py-1.5 rounded-full bg-white border border-cream-300 text-xs font-medium text-espresso">🌿 Antibakteri Alami</span>
+          <span class="px-3 py-1.5 rounded-full bg-white border border-cream-300 text-xs font-medium text-espresso">💧 Tahan Air & Lembap</span>
+          <span class="px-3 py-1.5 rounded-full bg-white border border-cream-300 text-xs font-medium text-espresso">♻️ Zero-Waste Kitchen</span>
+        </div>
+
+        <!-- Comparison Bar -->
+        <div class="bg-white p-4 rounded-2xl border border-cream-300/80 space-y-2.5 mt-4">
+          <div class="flex justify-between text-xs font-bold">
+            <span class="text-espresso">Pengurangan Sampah Plastik Dapur</span>
+            <span class="text-terracotta">Hingga 85% / Tahun</span>
+          </div>
+          <div class="w-full h-2.5 bg-cream-200 rounded-full overflow-hidden">
+            <div class="bg-terracotta h-full rounded-full" style="width: 85%"></div>
+          </div>
+          <p class="text-[11px] text-espresso-muted">Setara dengan menghemat 300+ meter gulungan plastik wrap sekali pakai per rumah tangga.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: 3 Feature Cards -->
+      <div class="lg:col-span-7 space-y-4">
+        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-cream-300/80 flex items-start gap-4 shadow-sm">
+          <div class="w-11 h-11 rounded-xl bg-terracotta-light text-terracotta flex items-center justify-center shrink-0">
+            <i data-lucide="droplets" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="font-serif font-bold text-lg text-espresso">Breathable & Anti-Basi</h3>
+            <p class="text-sm text-espresso-muted mt-1 leading-relaxed">
+              Pori-pori alami kain katun berlapis lilin membiarkan makanan "bernapas" tanpa membuatnya kering, menjaga sayuran dan roti tetap segar hingga 2x lebih lama.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-cream-300/80 flex items-start gap-4 shadow-sm">
+          <div class="w-11 h-11 rounded-xl bg-olive-light text-olive flex items-center justify-center shrink-0">
+            <i data-lucide="hand" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="font-serif font-bold text-lg text-espresso">Mudah Dibentuk & Kedap</h3>
+            <p class="text-sm text-espresso-muted mt-1 leading-relaxed">
+              Cukup gunakan kehangatan telapak tangan selama 3 detik untuk membentuk wrap mengikuti lekuk mangkuk, potongan alpukat, maupun sandwich.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-cream-300/80 flex items-start gap-4 shadow-sm">
+          <div class="w-11 h-11 rounded-xl bg-cream-200 text-espresso flex items-center justify-center shrink-0">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="font-serif font-bold text-lg text-espresso">Motif Unik & Edisi Terbatas</h3>
+            <p class="text-sm text-espresso-muted mt-1 leading-relaxed">
+              Karena berasal dari kurasi kain upcycled pilihan, setiap lembar COCOZY Wrap memiliki cerita dan pola estetis yang tidak pasaran di dapur Anda.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== PORTAL PENYETORAN & LAYANAN UPCYCLING ==================== -->
+  <section id="portal-upcycling" class="py-16 bg-cream-200/70 border-y border-cream-300/70">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold tracking-widest uppercase text-terracotta">KONTRIBUSI SIRKULAR</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-espresso mt-2">Portal Penyetoran & Layanan Upcycling</h2>
+        <p class="text-sm text-espresso-muted mt-2">
+          Tukarkan kain katun tak terpakai menjadi saldo, atau kirim kain kenanganmu untuk disulap menjadi food wrap pribadi.
+        </p>
+      </div>
+
+      <!-- Mode Switcher Tabs -->
+      <div class="flex justify-center mb-6">
+        <div class="inline-flex bg-cream-300/60 p-1.5 rounded-full border border-cream-300">
+          <button type="button" id="tab-jual" onclick="switchPortalTab('jual')" class="px-5 py-2 rounded-full text-xs sm:text-sm font-bold bg-white text-espresso shadow-sm transition">
+            Jual / Donasi Kain
+          </button>
+          <button type="button" id="tab-jasa" onclick="switchPortalTab('jasa')" class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold text-espresso-muted hover:text-espresso transition">
+            Jasa Upcycle Kain Pribadi
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Form Card -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-cream-300/80">
+        <div class="flex items-center gap-3 pb-5 mb-6 border-b border-cream-200">
+          <div class="w-9 h-9 rounded-full bg-terracotta-light text-terracotta flex items-center justify-center">
+            <i data-lucide="package-plus" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 id="portal-form-title" class="font-serif font-bold text-xl text-espresso">Jual & Daur Ulang Kain Katun</h3>
+            <p id="portal-form-subtitle" class="text-xs text-espresso-muted">Syarat: Bahan 100% katun/linen bersih, tidak berjamur, dan bebas bahan sintetis tebal.</p>
+          </div>
+        </div>
+
+        <form id="upcycle-form" onsubmit="handlePortalSubmit(event)" class="space-y-5">
+          <!-- Upload Foto Kain -->
+          <div>
+            <label class="block text-xs font-bold text-espresso mb-2">Foto Kondisi Kain (Opsional)</label>
+            <label for="fabric-photo" class="flex flex-col items-center justify-center border-2 border-dashed border-cream-300 hover:border-terracotta bg-cream-50 rounded-2xl p-6 cursor-pointer transition text-center">
+              <i data-lucide="image-plus" class="w-7 h-7 text-terracotta mb-2"></i>
+              <span id="file-label" class="text-xs font-semibold text-espresso">Klik untuk unggah foto kain katun Anda</span>
+              <span class="text-[11px] text-espresso-muted mt-1">Format JPG, PNG (Maks. 5MB)</span>
+              <input id="fabric-photo" type="file" accept="image/*" class="hidden" onchange="updateFileName(this)" />
+            </label>
+          </div>
+
+          <!-- Estimasi Berat Slider -->
+          <div class="bg-cream-50 p-4 rounded-2xl border border-cream-300/70">
+            <div class="flex items-center justify-between mb-2">
+              <label for="weight-slider" class="text-xs font-bold text-espresso">Perkiraan Berat Kain</label>
+              <span class="text-sm font-bold text-terracotta bg-terracotta-light px-3 py-0.5 rounded-full">
+                <span id="weight-display">2.0</span> kg
+              </span>
+            </div>
+            <input id="weight-slider" type="range" min="0.5" max="20" step="0.5" value="2.0" oninput="calculateEstimate()" class="w-full my-2" />
+            <div class="flex justify-between text-[11px] text-espresso-muted">
+              <span>0.5 kg (Min)</span>
+              <span>10 kg</span>
+              <span>20 kg (Maks)</span>
+            </div>
+          </div>
+
+          <!-- Input Nama & Kontak -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-espresso mb-1.5">Nama Lengkap *</label>
+              <input type="text" required placeholder="Contoh: Rezan Aliman" class="w-full px-4 py-2.5 rounded-xl bg-cream-50 border border-cream-300 text-sm focus:outline-none focus:border-terracotta" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-espresso mb-1.5">Nomor WhatsApp *</label>
+              <input type="tel" required placeholder="0812-xxxx-xxxx" class="w-full px-4 py-2.5 rounded-xl bg-cream-50 border border-cream-300 text-sm focus:outline-none focus:border-terracotta" />
+            </div>
+          </div>
+
+          <!-- Alamat / Catatan -->
+          <div>
+            <label class="block text-xs font-bold text-espresso mb-1.5">Alamat Penjemputan / Catatan Jenis Kain *</label>
+            <textarea rows="2" required placeholder="Tuliskan alamat lengkap atau jenis kain (misal: 3 kemeja katun & 1 sprei polos)..." class="w-full px-4 py-2.5 rounded-xl bg-cream-50 border border-cream-300 text-sm focus:outline-none focus:border-terracotta"></textarea>
+          </div>
+
+          <!-- Estimasi Reward / Biaya Box -->
+          <div class="bg-cream-200/80 p-4 rounded-2xl border border-cream-300 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-terracotta text-white flex items-center justify-center shrink-0">
+                <i data-lucide="wallet" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p id="estimate-label" class="text-[11px] font-semibold text-espresso-muted">Estimasi Saldo Insentif Anda</p>
+                <p id="estimate-price" class="font-bold text-lg text-espresso">Rp 25.000 <span class="text-xs font-normal text-espresso-muted">(Rp 12.500/kg)</span></p>
+              </div>
+            </div>
+            <span class="hidden sm:inline-block text-[11px] font-semibold text-olive bg-olive-light px-3 py-1 rounded-full">
+              Gratis Jemput Jabodetabek
+            </span>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="w-full bg-terracotta hover:bg-terracotta-hover text-white font-bold text-sm py-3.5 rounded-full transition shadow-md flex items-center justify-center gap-2">
+            <span>Kirim Formulir Penyetoran</span>
+            <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== KATALOG PRODUK ==================== -->
+  <section id="katalog" class="py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div>
+          <span class="text-xs font-bold tracking-widest uppercase text-terracotta">KOLEKSI SIAP PAKAI</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-espresso mt-2">Pilihan Upcycled Food Wraps</h2>
+          <p class="text-sm text-espresso-muted mt-2 max-w-xl">
+            Setiap lembar dibuat secara handmade dari 100% kain katun daur ulang pilihan dan bahan pelapis organik food-grade.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap gap-2" id="filter-container">
+          <button onclick="filterProducts('all', this)" class="filter-btn active px-4 py-2 rounded-full text-xs font-bold bg-terracotta text-white transition">Semua</button>
+          <button onclick="filterProducts('set', this)" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-white border border-cream-300 text-espresso hover:border-terracotta transition">Paket Set</button>
+          <button onclick="filterProducts('medium', this)" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-white border border-cream-300 text-espresso hover:border-terracotta transition">Ukuran M & L</button>
+          <button onclick="filterProducts('vegan', this)" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-white border border-cream-300 text-espresso hover:border-terracotta transition">Vegan Candelilla</button>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Products rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer id="tentang" class="bg-cream-200/80 border-t border-cream-300 pt-14 pb-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-cream-300">
+        
+        <!-- Brand Info -->
+        <div class="md:col-span-4 space-y-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-terracotta flex items-center justify-center text-white">
+              <i data-lucide="leaf" class="w-4 h-4"></i>
+            </div>
+            <span class="font-serif font-bold text-xl text-espresso">COCOZY Hub</span>
+          </div>
+          <p class="text-xs text-espresso-muted leading-relaxed">
+            Inisiatif ekonomi sirkular yang mengubah limbah kain katun menjadi pembungkus makanan alami ramah lingkungan, sekaligus memberdayakan komunitas penjahit lokal.
+          </p>
+          <div class="flex gap-2">
+            <span class="px-2.5 py-1 rounded bg-white border border-cream-300 text-[11px] font-semibold">Zero Waste</span>
+            <span class="px-2.5 py-1 rounded bg-white border border-cream-300 text-[11px] font-semibold">Local Artisans</span>
+          </div>
+        </div>
+
+        <!-- Links 1 -->
+        <div class="md:col-span-2 space-y-3">
+          <h4 class="font-bold text-xs uppercase tracking-wider text-espresso">Navigasi</h4>
+          <ul class="space-y-2 text-xs text-espresso-muted">
+            <li><a href="#beranda" class="hover:text-terracotta transition">Beranda</a></li>
+            <li><a href="#alur-sirkular" class="hover:text-terracotta transition">Alur Sirkular</a></li>
+            <li><a href="#keunggulan" class="hover:text-terracotta transition">Keunggulan Bahan</a></li>
+            <li><a href="#portal-upcycling" class="hover:text-terracotta transition">Setor Kain Bekas</a></li>
+            <li><a href="#katalog" class="hover:text-terracotta transition">Katalog Produk</a></li>
+          </ul>
+        </div>
+
+        <!-- Links 2 -->
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="font-bold text-xs uppercase tracking-wider text-espresso">Hubungi Kami</h4>
+          <ul class="space-y-2.5 text-xs text-espresso-muted">
+            <li class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-terracotta shrink-0"></i>
+              <span>Jakarta Selatan, Indonesia</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4 text-terracotta shrink-0"></i>
+              <span>halo@cocozyhub.id</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="instagram" class="w-4 h-4 text-terracotta shrink-0"></i>
+              <span>@cocozy.hub</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="font-bold text-xs uppercase tracking-wider text-espresso">Kabar Sirkular</h4>
+          <p class="text-xs text-espresso-muted">Dapatkan info jadwal drop-off kain dan rilis motif upcycled terbaru.</p>
+          <form onsubmit="handleNewsletter(event)" class="flex gap-2">
+            <input type="email" required placeholder="Email Anda..." class="w-full px-3.5 py-2 rounded-full bg-white border border-cream-300 text-xs focus:outline-none focus:border-terracotta" />
+            <button type="submit" class="bg-terracotta hover:bg-terracotta-hover text-white text-xs font-bold px-4 py-2 rounded-full transition shrink-0">
+              Gabung
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-espresso-muted gap-3">
+        <p>© 2026 COCOZY Hub Indonesia. Hak Cipta Dilindungi.</p>
+        <div class="flex gap-5">
+          <a href="#" class="hover:text-espresso">Kebijakan Privasi</a>
+          <a href="#" class="hover:text-espresso">Syarat & Ketentuan</a>
+          <a href="#" class="hover:text-espresso">Panduan Perawatan Wrap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== FLOATING BOTTOM CART BAR (Sesuai UI Bawah) ==================== -->
+  <div id="floating-cart-bar" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-xl bg-espresso text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-white/10 flex items-center justify-between transition-all duration-300">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-terracotta flex items-center justify-center">
+        <i data-lucide="shopping-bag" class="w-4 h-4 text-white"></i>
+      </div>
+      <div>
+        <p class="text-xs font-bold"><span id="cart-count">0</span> Item di Keranjang</p>
+        <p class="text-[11px] text-cream-300">Total: <span id="cart-total" class="font-bold text-white">Rp 0</span></p>
+      </div>
+    </div>
+    <button onclick="checkoutCart()" class="bg-terracotta hover:bg-terracotta-hover text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5">
+      <span>Checkout Sekarang</span>
+      <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+    </button>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div id="toast" class="fixed top-24 right-5 z-50 bg-espresso text-white text-xs font-medium px-4 py-3 rounded-xl shadow-lg border border-white/10 flex items-center gap-2.5 opacity-0 pointer-events-none transition-opacity duration-300">
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400"></i>
+    <span id="toast-message">Berhasil ditambahkan!</span>
+  </div>
+
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // 1. Product Data
+    const products = [
+      {
+        id: 1,
+        name: "COCOZY Starter Trio",
+        desc: "Set 3 Ukuran (S, M, L) • Beeswax Organik",
+        price: 45000,
+        category: "set",
+        badge: "Best Seller",
+        image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 2,
+        name: "Bread & Bowl Cover Wrap",
+        desc: "Ukuran XL (35x35 cm) • Ideal untuk Adonan & Mangkuk",
+        price: 42000,
+        category: "medium",
+        badge: "Favorit Dapur",
+        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 3,
+        name: "Picnic & Sandwich Pouch",
+        desc: "Ukuran L (30x30 cm) • Motif Kotak Vintage Upcycled",
+        price: 35000,
+        category: "medium",
+        badge: "Limited Pattern",
+        image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 4,
+        name: "Candelilla Vegan Wrap Set",
+        desc: "100% Plant-Based Wax • Set 2 Ukuran (M & L)",
+        price: 52000,
+        category: "vegan",
+        badge: "100% Vegan",
+        image: "https://images.unsplash.com/photo-1590779033100-9f60a05a013d?auto=format&fit=crop&w=600&q=80"
+      }
+    ];
+
+    let cart = [];
+    let currentPortalMode = 'jual'; // 'jual' or 'jasa'
+
+    // Format Rupiah
+    function formatRupiah(number) {
+      return 'Rp ' + number.toLocaleString('id-ID');
+    }
+
+    // Show Toast Notification
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').innerText = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 3000);
+    }
+
+    // 2. Render Products
+    function renderProducts(filter = 'all') {
+      const grid = document.getElementById('product-grid');
+      const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+      grid.innerHTML = filtered.map(product => `
+        <div class="bg-white rounded-2xl p-3.5 border border-cream-300/80 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+          <div>
+            <div class="relative rounded-xl overflow-hidden aspect-square bg-cream-200 mb-3.5">
+              <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+              <span class="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-sm text-espresso text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+                ${product.badge}
+              </span>
+            </div>
+            <h3 class="font-serif font-bold text-base text-espresso">${product.name}</h3>
+            <p class="text-xs text-espresso-muted mt-1 line-clamp-2">${product.desc}</p>
+          </div>
+          
+          <div class="pt-4 mt-3 border-t border-cream-200 flex items-center justify-between">
+            <span class="font-bold text-sm text-espresso">${formatRupiah(product.price)}</span>
+            <button onclick="addToCart(${product.id})" class="w-9 h-9 rounded-xl bg-cream-200 hover:bg-terracotta text-espresso hover:text-white flex items-center justify-center transition" title="Tambah ke Keranjang">
+              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    // Filter Products Handler
+    function filterProducts(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('bg-terracotta', 'text-white', 'font-bold');
+        b.classList.add('bg-white', 'border', 'border-cream-300', 'text-espresso', 'font-semibold');
+      });
+      btn.classList.remove('bg-white', 'border', 'border-cream-300', 'text-espresso', 'font-semibold');
+      btn.classList.add('bg-terracotta', 'text-white', 'font-bold');
+      renderProducts(category);
+    }
+
+    // 3. Cart Functions
+    function addToCart(productId) {
+      const item = products.find(p => p.id === productId);
+      cart.push(item);
+      updateCartUI();
+      showToast(`${item.name} ditambahkan ke keranjang!`);
+    }
+
+    function updateCartUI() {
+      const count = cart.length;
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+      document.getElementById('cart-count').innerText = count;
+      document.getElementById('nav-cart-badge').innerText = count;
+      document.getElementById('cart-total').innerText = formatRupiah(total);
+    }
+
+    function scrollToCart() {
+      document.getElementById('katalog').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function checkoutCart() {
+      if (cart.length === 0) {
+        showToast("Keranjang masih kosong. Pilih produk dulu ya!");
+        document.getElementById('katalog').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      alert(`Terima kasih telah mendukung ekosistem sirkular COCOZY!\n\nRingkasan Pesanan (${cart.length} item):\nTotal Pembayaran: ${formatRupiah(total)}\n\nTim kami akan mengarahkan Anda ke halaman pembayaran.`);
+      cart = [];
+      updateCartUI();
+    }
+
+    // 4. Portal Upcycling Logic
+    function switchPortalTab(mode) {
+      currentPortalMode = mode;
+      const tabJual = document.getElementById('tab-jual');
+      const tabJasa = document.getElementById('tab-jasa');
+      const title = document.getElementById('portal-form-title');
+      const subtitle = document.getElementById('portal-form-subtitle');
+      const estLabel = document.getElementById('estimate-label');
+
+      if (mode === 'jual') {
+        tabJual.className = "px-5 py-2 rounded-full text-xs sm:text-sm font-bold bg-white text-espresso shadow-sm transition";
+        tabJasa.className = "px-5 py-2 rounded-full text-xs sm:text-sm font-semibold text-espresso-muted hover:text-espresso transition";
+        title.innerText = "Jual & Daur Ulang Kain Katun";
+        subtitle.innerText = "Syarat: Bahan 100% katun/linen bersih, tidak berjamur, dan bebas bahan sintetis tebal.";
+        estLabel.innerText = "Estimasi Saldo Insentif Anda";
+      } else {
+        tabJasa.className = "px-5 py-2 rounded-full text-xs sm:text-sm font-bold bg-white text-espresso shadow-sm transition";
+        tabJual.className = "px-5 py-2 rounded-full text-xs sm:text-sm font-semibold text-espresso-muted hover:text-espresso transition";
+        title.innerText = "Jasa Upcycle Kain Pribadi";
+        subtitle.innerText = "Kirimkan kain kenanganmu, kami sulap menjadi set food wrap food-grade siap pakai.";
+        estLabel.innerText = "Estimasi Biaya Jasa Pelapisan Lilin Alami";
+      }
+      calculateEstimate();
+    }
+
+    function calculateEstimate() {
+      const weight = parseFloat(document.getElementById('weight-slider').value);
+      document.getElementById('weight-display').innerText = weight.toFixed(1);
+
+      const ratePerKg = currentPortalMode === 'jual' ? 12500 : 35000;
+      const total = weight * ratePerKg;
+
+      document.getElementById('estimate-price').innerHTML = `
+        ${formatRupiah(total)} <span class="text-xs font-normal text-espresso-muted">(${formatRupiah(ratePerKg)}/kg)</span>
+      `;
+    }
+
+    function updateFileName(input) {
+      if (input.files && input.files[0]) {
+        document.getElementById('file-label').innerText = `File dipilih: ${input.files[0].name}`;
+      }
+    }
+
+    function handlePortalSubmit(e) {
+      e.preventDefault();
+      showToast("Formulir berhasil dikirim! Tim kurir COCOZY akan menghubungi via WhatsApp.");
+      e.target.reset();
+      document.getElementById('file-label').innerText = "Klik untuk unggah foto kain katun Anda";
+      calculateEstimate();
+    }
+
+    function handleNewsletter(e) {
+      e.preventDefault();
+      showToast("Terima kasih telah berlangganan Kabar Sirkular COCOZY!");
+      e.target.reset();
+    }
+
+    // Initial Render
+    renderProducts();
+  </script>
+</body>
+</html>
